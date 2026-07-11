@@ -49,8 +49,8 @@ function hydrateData() {
   // Offer chip
   const offerEl = $('[data-offer]')
   if (offerEl && offer.active) {
-    offerEl.innerHTML = `<span class="offer-chip__dot">🏷️</span>
-      <span><strong>${offer.headline}</strong> · ${offer.label.toLowerCase()} until ${offer.ends}</span>`
+    offerEl.innerHTML = `<span class="offer-chip__tag">${offer.label}</span>
+      <span class="offer-chip__body"><span><strong>${offer.headline}</strong> · until ${offer.ends}</span></span>`
   } else if (offerEl) {
     offerEl.remove()
   }
@@ -74,8 +74,6 @@ function hydrateData() {
 /* ---------------------------------------------------------------
    2. Services — tabs + panels
 --------------------------------------------------------------- */
-const ICONS = { scissors: '✂️', droplet: '🫧', paw: '🐾', sparkle: '✨' }
-
 function buildServices() {
   const tabsEl = $('[data-service-tabs]')
   const panelsEl = $('[data-service-panels]')
@@ -87,7 +85,7 @@ function buildServices() {
     tab.setAttribute('role', 'tab')
     tab.setAttribute('aria-selected', idx === 0 ? 'true' : 'false')
     tab.dataset.target = cat.id
-    tab.innerHTML = `<span class="service-tab__ico">${ICONS[cat.icon] || '🐾'}</span> ${cat.name}`
+    tab.textContent = cat.name
     tabsEl.appendChild(tab)
 
     const panel = document.createElement('div')
@@ -95,19 +93,16 @@ function buildServices() {
     panel.id = `panel-${cat.id}`
     panel.innerHTML = `
       <p class="service-panel__intro">${cat.intro}</p>
-      <div class="service-grid">
+      <div class="service-menu">
         ${cat.services
           .map(
             (s) => `
-          <article class="service-card">
-            <div class="service-card__top">
-              <h4>${s.name}</h4>
-              <span class="service-card__price">${s.price}</span>
-            </div>
-            <p>${s.desc}</p>
-            ${s.badge ? `<span class="service-card__badge">${s.badge}</span>` : ''}
-            ${s.provisional ? `<span class="service-card__note">Guide price — confirmed on the day</span>` : ''}
-          </article>`
+          <div class="service-row">
+            <h4 class="service-row__name">${s.name}${s.badge ? ` <span class="service-row__badge">${s.badge}</span>` : ''}</h4>
+            <span class="service-row__price">${s.price}</span>
+            <p class="service-row__desc">${s.desc}</p>
+            ${s.provisional ? `<span class="service-row__note">Guide price — confirmed on the day</span>` : ''}
+          </div>`
           )
           .join('')}
       </div>`
