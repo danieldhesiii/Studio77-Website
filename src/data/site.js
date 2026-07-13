@@ -199,17 +199,20 @@ export const reviews = [
 ];
 
 /**
- * Gallery images. Real stock photography (Unsplash) for the demo — swap for
- * the owner's own before/after shots, or connect Instagram in gallery.js.
- * Each has a graceful gradient fallback if the CDN image fails to load.
+ * Gallery images — Studio 77's own work, pulled from the Facebook page.
+ * Files live in `public/gallery/` and are served from the site root, so a
+ * `src` of `/gallery/x.jpg` resolves in dev and in the built site alike.
+ * Each has a graceful gradient fallback if an image ever fails to load.
+ * To go fully live/auto-updating, connect Instagram in src/lib/gallery.js.
  */
 export const gallery = [
-  { src: 'https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb?w=800&q=80&auto=format&fit=crop', alt: 'Freshly groomed spaniel', tall: true },
-  { src: 'https://images.unsplash.com/photo-1591160690555-5debfba289f0?w=800&q=80&auto=format&fit=crop', alt: 'Poodle after a full groom' },
-  { src: 'https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=800&q=80&auto=format&fit=crop', alt: 'Small dog being bathed' },
-  { src: 'https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?w=800&q=80&auto=format&fit=crop', alt: 'Terrier having a trim', tall: true },
-  { src: 'https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=800&q=80&auto=format&fit=crop', alt: 'Happy dog portrait' },
-  { src: 'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=800&q=80&auto=format&fit=crop', alt: 'Golden retriever close up' },
-  { src: 'https://images.unsplash.com/photo-1518155317743-a8ff43ea6a5f?w=800&q=80&auto=format&fit=crop', alt: 'Fluffy groomed puppy', tall: true },
-  { src: 'https://images.unsplash.com/photo-1544568100-847a948585b9?w=800&q=80&auto=format&fit=crop', alt: 'Dog enjoying a blow dry' },
+  { src: '/gallery/studio77-1.jpg', alt: 'Freshly groomed black cockapoo on the Studio 77 sofa' },
+  { src: '/gallery/studio77-9.jpg', alt: 'Working cocker spaniel looking sharp after a full groom', tall: true },
+  { src: '/gallery/studio77-3.jpg', alt: 'Cavalier King Charles Spaniel puppy — before and after' },
+  { src: '/gallery/studio77-7.jpg', alt: 'Two cocker spaniels freshly groomed and relaxed' },
+  { src: '/gallery/studio77-6.jpg', alt: 'Black-and-white cavapoo — before and after grooming' },
+  { src: '/gallery/studio77-8.jpg', alt: 'Springer spaniel looking smart after his groom', tall: true },
+  { src: '/gallery/studio77-11.jpg', alt: 'A full grooming transformation — before and after' },
+  { src: '/gallery/studio77-12.jpg', alt: 'Two happy pups after their grooms at Studio 77' },
+  { src: '/gallery/studio77-4.jpg', alt: 'White Havanese — before and after a tidy-up' },
 ];
